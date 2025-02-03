@@ -1,0 +1,639 @@
+/****************************************************************************** 
+*                                   VARIABLES 
+******************************************************************************/
+
+/****************************************************************************** 
+*                             SET FONT SIZES 
+******************************************************************************/
+
+/* Based on root size 16px */
+:root {
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-md: 1.125rem;  /* 18px */
+  --font-size-lg: 1.25rem;   /* 20px */
+  --font-size-xl: 1.5rem;    /* 24px */
+  --font-size-2xl: 1.875rem; /* 30px */
+  --font-size-3xl: 2.25rem;  /* 36px */
+  --font-size-4xl: 3rem;     /* 48px */
+  --font-size-5xlg: 3.75rem; /* 60px */
+  --font-size-6xlg: 4.5rem;  /* 72px */ 
+}
+
+/****************************************************************************** 
+*                             SET MARGIN SIZES 
+******************************************************************************/
+
+:root {
+  --margin-none: 0px;
+  --margin-xxs: 0.25rem;  /* 4px */
+  --margin-xs: 0.5rem;    /* 8px */
+  --margin-sm: 0.75rem;   /* 12px */
+  --margin-md: 1rem;      /* 16px */
+  --margin-lg: 1.5rem;    /* 24px */
+  --margin-xl: 2rem;      /* 32px */
+  --margin-2xl: 3rem;     /* 48px */
+  --margin-3xl: 4rem;     /* 64px */
+  --margin-4xl: 6rem;     /* 96px */
+  --margin-5xl: 8rem;     /* 128px */
+}
+
+/****************************************************************************** 
+*                             SET PADDING SIZES 
+******************************************************************************/
+
+:root {
+  --padding-none: 0px;
+  --padding-xxs: 0.25rem;  /* 4px */
+  --padding-xs: 0.5rem;    /* 8px */
+  --padding-sm: 0.75rem;   /* 12px */
+  --padding-md: 1rem;      /* 16px */
+  --padding-lg: 1.5rem;    /* 24px */
+  --padding-xl: 2rem;      /* 32px */
+  --padding-2xl: 3rem;     /* 48px */
+  --padding-3xl: 4rem;     /* 64px */
+  --padding-4xl: 6rem;     /* 96px */
+  --padding-5xl: 8rem;     /* 128px */
+}
+
+/****************************************************************************** 
+*                             RESET DEFAULT STYLES 
+******************************************************************************/
+/* Reset all elements to have no default margin or padding */
+* {
+  box-sizing: border-box;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove default styles for headings, paragraphs, and other text elements */
+h1, h2, h3, h4, h5, h6, p, blockquote, pre {
+  font-weight: normal;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove table spacing */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove link styles */
+a {
+  color: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+  text-decoration: none;
+}
+
+/* Remove default form element styles */
+input, textarea, select {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove default appearance for form elements in some browsers */
+input, button, textarea, select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Remove default image spacing */
+img {
+  display: block;
+  height: auto;
+  margin: var(--margin-none);
+  max-width: 100%;
+  padding: var(--padding-none);
+}
+
+/* Set html and body to 100% height and no scrolling overflow */
+html, body {
+  font-family: var(--font-primary);
+  height: 100vh;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+/****************************************************************************** 
+*                             LOAD FONTS
+******************************************************************************/
+
+@font-face {
+  font-family: 'BigBlue'; /* Give your font a name */
+  src: url('/static/fonts/BigBlueTermPlusNerdFontMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Optional: Improves perceived performance */
+}
+
+/* Define CSS variables for your fonts */
+:root {
+  --font-primary: 'BigBlue', mono;
+}
+
+/****************************************************************************** 
+*                             SET COLOR SCHEME 
+******************************************************************************/
+
+:root {
+  --base: #faf4ed;
+  --surface: #f2e9e1;
+  --overlay: #e4dfde;
+  --muted: #9893a5;
+  --subtle: #797593;
+  --text: #575279;
+  --love: #b4637a;
+  --gold: #ea9d34;
+  --rose: #d7827e;
+  --pine: #286983;
+  --foam: #56949f;
+  --iris: #907aa9;
+  --highlight-low: rgba(152, 147, 165, 0.15);
+  --highlight-med: rgba(152, 147, 165, 0.30);
+  --highlight-high: rgba(152, 147, 165, 0.60);
+}
+
+body.dark-theme {
+  --base: #191724;
+  --surface: #1f1d2e;
+  --overlay: #26233a;
+  --muted: #6e6a86;
+  --subtle: #908caa;
+  --text: #e0def4;
+  --love: #eb6f92;
+  --gold: #f6c177;
+  --rose: #ebbcba;
+  --pine: #31748f;
+  --foam: #9ccfd8;
+  --iris: #c4a7e7;
+  --highlight-low: rgba(110, 106, 134, 0.15);
+  --highlight-med: rgba(110, 106, 134, 0.30);
+  --highlight-high: rgba(110, 106, 134, 0.60);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #26233a;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --love: #eb6f92;
+    --gold: #f6c177;
+    --rose: #ebbcba;
+    --pine: #31748f;
+    --foam: #9ccfd8;
+    --iris: #c4a7e7;
+    --highlight-low: rgba(110, 106, 134, 0.15);
+    --highlight-med: rgba(110, 106, 134, 0.30);
+    --highlight-high: rgba(110, 106, 134, 0.60);
+  }
+
+  body.light-theme {
+    --base: #faf4ed;
+    --surface: #f2e9e1;
+    --overlay: #e4dfde;
+    --muted: #9893a5;
+    --subtle: #797593;
+    --text: #575279;
+    --love: #b4637a;
+    --gold: #ea9d34;
+    --rose: #d7827e;
+    --pine: #286983;
+    --foam: #56949f;
+    --iris: #907aa9;
+    --highlight-low: rgba(152, 147, 165, 0.15);
+    --highlight-med: rgba(152, 147, 165, 0.30);
+    --highlight-high: rgba(152, 147, 165, 0.60);
+  }
+}
+
+/****************************************************************************** 
+*                             SCROLLBAR STYLES 
+******************************************************************************/
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--base);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--rose);
+  border-radius: 5px;
+}
+
+body {
+  scrollbar-color: var(--rose) var(--base);
+}
+
+/****************************************************************************** 
+*                             BASE STYLES 
+******************************************************************************/
+
+a, p, label, input, textarea, label {
+  font-family: var(--font-primary);
+}
+
+pre {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+p.aboutText {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/****************************************************************************** 
+*                             HTMX STYLES 
+******************************************************************************/
+
+.htmxFade {
+  opacity: 1;
+  transition: all 0.6s ease;
+}
+
+.htmxFade.htmx-added {
+  opacity: 0;
+}
+
+
+.htmxFade.htmx-swapping {
+  opacity: 0;
+}
+
+/****************************************************************************** 
+*                             MAIN STYLES 
+******************************************************************************/
+
+body {
+  align-items: center;
+  background-color: var(--base);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+h1 {
+  background-color: var(--text);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--base);
+  font-size: var(--font-size-4xl);
+  font-weight: bold;
+  outline: 3px solid var(--base);
+  padding: var(--padding-md);
+  width: fit-content;
+}
+
+h2 {
+  background-color: var(--text);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--base);
+  font-size: var(--font-size-3xl);
+  font-weight: bold;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  width: fit-content;
+}
+
+h3 {
+  color: var(--text);
+  font-size: var(--font-size-3xl);
+  font-weight: bold;
+  padding: var(--padding-md);
+}
+
+.buttonPrimary {
+  background-color: var(--pine);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--base);
+  cursor: pointer;
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  transition: transform  0.2s ease-out, 
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              position 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.buttonPrimary:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.buttonPrimary:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.buttonSecondary {
+  background-color: var(--foam);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--base);
+  cursor: pointer;
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  transition: transform  0.2s ease-out, 
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              position 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.buttonSecondary:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.buttonSecondary:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.buttonGhost {
+  background-color: var(--base);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  transition: transform  0.2s ease-out, 
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              position 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.buttonGhost:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.buttonGhost:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.buttonWarn {
+  background-color: var(--love);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--base);
+  cursor: pointer;
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  transition: transform  0.2s ease-out, 
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              position 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.buttonWarn:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.buttonWarn:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.linkPrimary {
+  background-color: var(--base);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--text);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  outline: 3px solid var(--base);
+  padding: var(--padding-xs);
+  text-decoration: underline;
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.linkPrimary:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.linkPrimary:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.linkSecondary {
+  color: var(--text);
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  padding: var(--padding-xs);
+  text-decoration: underline;
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+.linkSecondary:hover {
+  transform: translate(-4px, -4px);
+}
+
+.linkSecondary:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.linkIcon {
+  align-items: center;
+  background-color: var(--base);
+  border: 3px solid var(--text);
+  box-shadow: 6px 6px 0 var(--foam);
+  color: var(--text);
+  display: flex;
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  height: 35px;
+  justify-content: center;
+  outline: 3px solid var(--base);
+  padding: var(--padding-md);
+  text-decoration: underline;
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              background-color 1.0s ease-out;
+  width: 35px;
+}
+
+.linkIcon:hover {
+  box-shadow: 10px 10px 0 var(--foam);
+  transform: translate(-4px, -4px);
+}
+
+.linkIcon:active {
+  background-color: var(--base);
+  border-color: var(--text);
+  box-shadow: 0px 0px 0 var(--foam);
+  color: var(--text);
+  transform: translate(4px, 4px);
+}
+
+.linkInLine {
+  color: var(--text);
+  font-family: var(--font-primary), mono;
+  font-size: var(--font-base);
+  font-weight: 400;
+  padding: var(--padding-xs);
+  text-decoration: underline;
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out,
+              outline 1.0s ease-out,
+              background-color 1.0s ease-out;
+}
+
+/****************************************************************************** 
+*                             HEADER STYLES 
+******************************************************************************/
+
+header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-md);
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  z-index: 1002;
+}
+
+.headerRightContainer {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/****************************************************************************** 
+*                             FOOTER STYLES 
+******************************************************************************/
+
+footer {
+  bottom: 0;
+  left: 0;
+  font-family: var(--font-primary), mono;
+  padding: var(--padding-md);
+  text-align: center;
+  width: 100%;
+}
+
+/****************************************************************************** 
+*                             SECTION STYLES 
+******************************************************************************/
+
+.sectionContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  height: auto;
+  justify-content: flex-start;
+  padding: var(--padding-xl);
+  width: 100%;
+}
+
+.dashed-line-lg {
+  border-top: 2px dashed var(--text);
+  width: 80%;
+}
+
+.dashed-line-sm {
+  border-top: 2px dashed var(--text);
+  width: 20%;
+}
+
+/****************************************************************************** 
+*                             CONTACT STYLES 
+******************************************************************************/
+
+/****************************************************************************** 
+*                             SPINNER STYLES 
+******************************************************************************/
+

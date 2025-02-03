@@ -1,0 +1,40 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple HTML Page</title>
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <script src="/static/js/htmx/htmx.min.js" type="module"></script>
+  <script src="/static/js/components/spinnerHex.js" ></script>
+  <script src="/static/js/components/iconThemeAware.js" defer></script>
+</head>
+<body>
+  {{ template "header" }}
+
+    {{ template "content" }}
+
+  {{ template "footer" }}
+
+<script>
+  // get style sheet for webcomponents
+  let globalStyles = new CSSStyleSheet();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    for (const sheet of document.styleSheets) {
+      if (sheet.href && sheet.href.includes("styles.css")) {
+        let cssText = "";
+        for (const rule of sheet.cssRules) {
+          cssText += rule.cssText + "\n";
+        } 
+        // Convert to constructed stylesheet
+        globalStyles.replaceSync(cssText);
+        break;
+      }
+    }
+  });
+</script>
+</body>
+</html>
+{{ end }}

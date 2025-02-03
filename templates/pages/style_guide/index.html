@@ -1,0 +1,24 @@
+{{ define "content" }}
+<div class="sectionContainer">
+  <div class="dashed-line-lg"></div>
+  <h1>Header 1</h1>
+  <div class="dashed-line-sm"></div>
+  <h2>Header 2</h2>
+  <div class="dashed-line-sm"></div>
+  <h3>Header 3</h3>
+  <div class="dashed-line-lg"></div>
+  <button class="buttonPrimary">Primary</button>
+  <button class="buttonSecondary">Secondary</button>
+  <button class="buttonGhost">Ghost</button>
+  <button class="buttonWarn">Warning</button>
+  <div class="dashed-line-lg"></div>
+  <a class="linkPrimary">Link</a>
+  <a class="linkSecondary">Link</a>
+  <a class="linkIcon">
+    <theme-aware-icon icon="github-mark" width="30" height="30"></theme-aware-icon>
+  </a>
+  <div class="dashed-line-lg"></div>
+  {{ template "contact_form" }}
+  <div class="dashed-line-lg"></div>
+</div>
+{{ end }}

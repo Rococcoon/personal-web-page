@@ -1,0 +1,9 @@
+{{ define "contact_form" }}
+<div id="contactSwapContainer"
+     class="htmxFade"
+     hx-get="/contact_form_load" 
+     hx-swap="innerHTML settle:1s swap:1s"
+     hx-trigger="load">
+  <hex-spinner id="hexSpinner"></hex-spinner>
+</div>
+{{ end }}

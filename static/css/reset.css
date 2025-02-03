@@ -1,0 +1,83 @@
+/****************************************************************************** 
+*                             RESET DEFAULT STYLES 
+******************************************************************************/
+/* Reset all elements to have no default margin or padding */
+* {
+  box-sizing: border-box;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove default styles for headings, paragraphs, and other text elements */
+h1, h2, h3, h4, h5, h6, p, blockquote, pre {
+  font-weight: normal;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove table spacing */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove link styles */
+a {
+  color: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+  text-decoration: none;
+}
+
+/* Remove default form element styles */
+input, textarea, select {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+}
+
+/* Remove default appearance for form elements in some browsers */
+input, button, textarea, select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Remove default image spacing */
+img {
+  display: block;
+  height: auto;
+  margin: var(--margin-none);
+  max-width: 100%;
+  padding: var(--padding-none);
+}
+
+/* Set html and body to 100% height and no scrolling overflow */
+html, body {
+  font-family: var(--primary-font);
+  height: 100vh;
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+  overflow-x: hidden;
+  width: 100vw;
+}

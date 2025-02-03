@@ -1,0 +1,73 @@
+# General OS files
+.DS_Store
+Thumbs.db
+
+# Golang-specific
+bin/
+*.exe
+*.test
+*.out
+*.a
+*.o
+*.so
+
+# Go build cache and modules
+/go/
+vendor/
+*.mod
+*.sum
+
+# Air (Live Reload) files
+.air/
+tmp/
+
+# Environment files (Secrets, Configs)
+.env
+.env.*
+config/*.yaml
+config/*.json
+config/*.toml
+
+# Log files
+*.log
+logs/
+debug.log
+trace.out
+
+# Email-related (SMTP Credentials, etc.)
+email_credentials.json
+smtp_config.json
+
+# Frontend - Node.js dependencies
+node_modules/
+dist/
+build/
+
+# Frontend - Package managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Next.js / React / Vue / Vite caches
+.next/
+.nuxt/
+out/
+.vite/
+.vitepress/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE / Editor-specific
+.vscode/
+.idea/
+*.iml
+*.swp
+
+# Miscellaneous
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Todo list, don't want to show unfinished server work
+.todo.md

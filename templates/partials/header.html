@@ -1,0 +1,13 @@
+{{ define "header" }}
+<script src="/static/js/components/toggleDarkLight.js" type="module"></script>
+<script src="/static/js/components/hamburgerMenu.js" type="module"></script>
+<header>
+  <hamburger-menu></hamburger-menu>
+  <div class="headerRightContainer">
+    <a href="https://www.github.com/Rococcoon" target="_blank" class="linkIcon">
+      <theme-aware-icon icon="github-mark" width="30" height="30"></theme-aware-icon>
+    </a>
+    <dark-light-toggle></dark-light-toggle>
+  </div>
+</header>
+{{ end }}
