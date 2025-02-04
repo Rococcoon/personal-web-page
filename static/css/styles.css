@@ -342,6 +342,17 @@ h3 {
   padding: var(--padding-md);
 }
 
+h6 {
+  border-color: var(--rose);
+  border-style: dashed;
+  border-width: 1px;
+  box-shadow: 3px 3px 0 var(--muted);
+  color: var(--text);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  padding: var(--padding-md);
+}
+
 .buttonPrimary {
   background-color: var(--pine);
   border: 3px solid var(--text);
@@ -624,16 +635,87 @@ footer {
   width: 80%;
 }
 
+.dashed-line-md {
+  border-top: 2px dashed var(--text);
+  width: 50%;
+}
+
 .dashed-line-sm {
   border-top: 2px dashed var(--text);
   width: 20%;
 }
 
 /****************************************************************************** 
-*                             CONTACT STYLES 
+*                             LANDING STYLES 
 ******************************************************************************/
+
+.landingContainer {
+  min-height: 90vh;
+}
 
 /****************************************************************************** 
-*                             SPINNER STYLES 
+*                             PROJECTS STYLES 
 ******************************************************************************/
 
+.projectContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+}
+
+.skillsContainer {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media (min-width: 0px) {
+  .textContainer {
+    padding-left: var(--padding-none);
+    padding-right: var(--padding-none);
+    width:100%;
+  }
+}
+
+@media (min-width: 450px) {
+  .textContainer {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    width:100%;
+  }
+}
+
+@media (min-width: 850px) {
+  .textContainer {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    width:80%;
+  }
+}
+
+@media (min-width: 1050px) {
+  .textContainer {
+    padding-left: var(--padding-3xl);
+    padding-right: var(--padding-3xl);
+    width:80%;
+  }
+}
+
+.textContainer p {
+  line-height: 1.5;
+}
+
+.projectLinkContainer {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.projectLinkContainer p {
+  font-size: var(--font-size-xs);
+}
