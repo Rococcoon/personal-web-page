@@ -108,10 +108,11 @@ class HamburgerMenu extends HTMLElement {
 
     // Add menu items dynamically (you can customize these)
     const menuItems = [
-      { href: '#', text: 'HOME' },
-      { href: '#', text: 'ABOUT' },
-      { href: '#', text: 'PROJECTS' },
-      { href: '#', text: 'CONTACT' },
+      { href: '#home', text: 'HOME' },
+      { href: '#about', text: 'ABOUT' },
+      { href: '#projects', text: 'PROJECTS' },
+      { href: '#contact', text: 'CONTACT' },
+      { href: '#credits', text: 'CREDITS' },
     ];
 
     menuItems.forEach(item => {
@@ -119,6 +120,20 @@ class HamburgerMenu extends HTMLElement {
       const a = document.createElement('a');
       a.href = item.href;
       a.textContent = item.text;
+
+      // Smooth scroll on click
+      a.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetSection = document.querySelector(item.href);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Close the menu after clicking a link
+        nav.classList.remove('open');
+        menuButton.classList.remove('open');
+      });
+
       li.appendChild(a);
       ul.appendChild(li);
     });
