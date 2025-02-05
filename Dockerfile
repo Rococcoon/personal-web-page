@@ -1,5 +1,5 @@
-# Use Golang image as base
-FROM golang:1.23.4-alpine as build
+# Use the official Golang image with Bookworm
+FROM golang:bookworm
 
 # Set working directory in the container
 WORKDIR /app
