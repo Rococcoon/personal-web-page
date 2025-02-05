@@ -25,17 +25,25 @@ const contactFormCss = `
     width: 50%; /* Or use a CSS variable for better control */
   }
 
-  @media (max-width: 900px) {
+  @media (min-width: 0px) {
+    .contactForm {
+      padding: var(--padding-md);
+      width: 95%;
+    }
+  }
+
+  @media (min-width: 640px) {
     .contactForm {
       width: 80%;
     }
   }
 
-  @media (max-width: 500px) {
+  @media (min-width: 1024px) {
     .contactForm {
-      width: 70%;
+      width: 60%;
     }
   }
+
 
   .contactForm form {
     display: flex;
