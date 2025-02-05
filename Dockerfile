@@ -1,38 +1,32 @@
-# Use the official Golang image with Bookworm
-FROM golang:bookworm
+# Build stage
+FROM golang:bookworm AS builder
 
-# Set working directory in the container
 WORKDIR /app
 
-# Copy go.mod and go.sum files to cache dependencies
+# Copy Go module files and download dependencies
 COPY go.mod go.sum ./
+RUN go mod download
 
-# Download Go dependencies
-RUN go mod tidy
-
-# Copy the rest of the application code
+# Copy the rest of the source code (including static and templates)
 COPY . .
 
-# Install Air for hot-reloading (only needed in dev mode)
-RUN go install github.com/cosmtrek/air@latest
+# Build the Go app
+RUN go build -o server main.go
 
-# Build the Go application
-RUN go build -o main .
+# Final runtime stage (smaller image)
+FROM debian:bookworm-slim
 
-# Stage for production
-FROM alpine:latest
+WORKDIR /app
 
-# Install necessary dependencies for running the Go app
-RUN apk add --no-cache ca-certificates
+# Copy the compiled binary from the builder stage
+COPY --from=builder /app/server .
 
-# Set the working directory
-WORKDIR /root/
+# Copy static and templates directories into the container
+COPY static /app/static
+COPY templates /app/templates
 
-# Copy the built application from the build stage
-COPY --from=build /app/main .
+# Expose the port
+EXPOSE 8000
 
-# Expose the port the app runs on (change if needed)
-EXPOSE 8080
-
-# Command to run the application
-CMD ["./main"]
+# Run the binary
+CMD ["./server"]
