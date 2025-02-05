@@ -665,7 +665,21 @@ footer {
 ******************************************************************************/
 
 .landingContainer {
+  align-items: center;
+  display: flex;
+  gap: 120px;
+  justify-content: flex-start;
   min-height: 90vh;
+}
+
+.titleContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.titleContainer h3 {
+  padding-left: var(--padding-none);
 }
 
 /****************************************************************************** 
