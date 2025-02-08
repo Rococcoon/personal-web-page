@@ -75,11 +75,17 @@ class ThemeAwareIcon extends HTMLElement {
 
   async getCachedImage(url) {
     if ('caches' in window) {
-      const cache = await caches.open('icon-cache');
-      const response = await cache.match(url);
-      if (response) {
-        return response.blob();
+      try {
+        const cache = await caches.open('icon-cache');
+        const response = await cache.match(url);
+        if (response) {
+          return response.blob();
+        }
+      } catch (error) {
+        console.error("Cache API error:", error);
       }
+    } else {
+      console.warn("Cache API not supported.");
     }
     return null;
   }
