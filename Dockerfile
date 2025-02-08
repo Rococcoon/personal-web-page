@@ -14,25 +14,13 @@ RUN go mod tidy
 COPY . .
 
 # Install Air for hot-reloading (only needed in dev mode)
-RUN go install github.com/cosmtrek/air@latest
+RUN go install github.com/air-verse/air@latest
 
 # Build the Go application
 RUN go build -o main .
 
-# Stage for production
-FROM alpine:latest
-
-# Install necessary dependencies for running the Go app
-RUN apk add --no-cache ca-certificates
-
-# Set the working directory
-WORKDIR /root/
-
-# Copy the built application from the build stage
-COPY --from=build /app/main .
-
 # Expose the port the app runs on (change if needed)
-EXPOSE 8080
+EXPOSE 8000
 
 # Command to run the application
 CMD ["./main"]
