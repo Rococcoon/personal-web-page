@@ -14,8 +14,8 @@ bin/
 # Go build cache and modules
 /go/
 vendor/
-*.mod
-*.sum
+# *.mod
+# *.sum
 
 # Air (Live Reload) files
 .air/
