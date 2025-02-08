@@ -18,8 +18,7 @@ class ThemeAwareIcon extends HTMLElement {
     `;
     this.shadowRoot.appendChild(styles);
 
-    this.previousBlobUrl = null;
-    this.cachedIcons = {};  // Store cached icon URLs here
+    this.iconImg.style.opacity = 0; // Initially hide the icon
 
     this.observer = new MutationObserver(() => {
       this.updateIcon();
@@ -33,7 +32,7 @@ class ThemeAwareIcon extends HTMLElement {
     this.updateSize();
   }
 
-  async updateIcon() {
+  updateIcon() {
     const isDarkMode = document.body.classList.contains('light-theme');
     const iconName = this.getAttribute('icon');
 
@@ -46,79 +45,13 @@ class ThemeAwareIcon extends HTMLElement {
     const darkIconPath = `/static/icons/${iconName}-dark.png`;
     const iconUrl = isDarkMode ? darkIconPath : lightIconPath;
 
-    // Check if this icon is already cached in the local state
-    if (this.cachedIcons[iconUrl]) {
-      this.setBlobUrl(this.cachedIcons[iconUrl]);
-      return;
-    }
-
-    this.iconImg.style.opacity = 0; // Fade out
-
-    try {
-      const cachedBlob = await this.getCachedImage(iconUrl);
-      if (cachedBlob) {
-        this.setBlobUrl(cachedBlob);
-      } else {
-        this.fetchAndCacheImage(iconUrl);
-      }
-    } catch (error) {
-      console.error("Error fetching or caching icon:", error);
-      this.iconImg.src = iconUrl; // Fallback to direct fetch if cache fails
-    }
-
+    this.iconImg.src = iconUrl;
     this.iconImg.alt = isDarkMode ? `${iconName} (Dark)` : `${iconName} (Light)`;
 
+    // Fade in the image after changing the source
     setTimeout(() => {
-      this.iconImg.style.opacity = 1; // Fade in
+      this.iconImg.style.opacity = 1;
     }, 150);
-  }
-
-  async getCachedImage(url) {
-    if ('caches' in window) {
-      try {
-        const cache = await caches.open('icon-cache');
-        const response = await cache.match(url);
-        if (response) {
-          return response.blob();
-        }
-      } catch (error) {
-        console.error("Cache API error:", error);
-      }
-    } else {
-      console.warn("Cache API not supported.");
-    }
-    return null;
-  }
-
-  async fetchAndCacheImage(url) {
-    // Only fetch if not already in cache
-    if (this.cachedIcons[url]) {
-      return;
-    }
-
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-
-      const cache = await caches.open('icon-cache');
-      cache.put(url, response.clone()); // Store in cache
-
-      const blob = await response.blob();
-      this.cachedIcons[url] = blob; // Store it in our local cache
-      this.setBlobUrl(blob);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  }
-
-  setBlobUrl(blob) {
-    // Revoke the old Blob URL to prevent memory leaks
-    if (this.previousBlobUrl) {
-      URL.revokeObjectURL(this.previousBlobUrl);
-    }
-
-    this.previousBlobUrl = URL.createObjectURL(blob);
-    this.iconImg.src = this.previousBlobUrl;
   }
 
   updateSize() {
@@ -141,9 +74,6 @@ class ThemeAwareIcon extends HTMLElement {
 
   disconnectedCallback() {
     this.observer.disconnect();
-    if (this.previousBlobUrl) {
-      URL.revokeObjectURL(this.previousBlobUrl); // Clean up on component removal
-    }
   }
 }
 
