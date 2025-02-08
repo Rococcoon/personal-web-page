@@ -27,7 +27,7 @@ func main() {
       handlers.ContactFormSubmitHandler(w, r, cfg)
     })
 
-  port := "8000"
+  port := "8080"
   log.Printf("Server stating on port: %s", port)
   err := http.ListenAndServe(":"+port, mux)
   if err != nil {
