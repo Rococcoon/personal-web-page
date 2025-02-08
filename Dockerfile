@@ -35,7 +35,7 @@ COPY templates /app/templates
 COPY --from=builder /app/.env .env
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 42069
 
 # Run the binary
 CMD ["./server"]
