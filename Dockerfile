@@ -7,6 +7,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
+# Copy the .env file into the container
+COPY .env /app/.env
+
 # Copy the rest of the source code
 COPY . .
 
@@ -27,6 +30,9 @@ COPY --from=builder /app/server .
 # Copy static and templates directories into the container
 COPY static /app/static
 COPY templates /app/templates
+
+# ✅ Copy the .env file into the final container
+COPY --from=builder /app/.env .env
 
 # Expose the port
 EXPOSE 8000
